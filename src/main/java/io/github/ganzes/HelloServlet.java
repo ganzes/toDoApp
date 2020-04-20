@@ -1,6 +1,5 @@
 package io.github.ganzes;
 
-import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet(name = "Hello", urlPatterns = {"/api/*"})
 public class HelloServlet extends HttpServlet {
-    private static final String NAME_PARA = "name";
+    private static final String NAME_PARAM = "name";
     private final Logger logger = LoggerFactory.getLogger(HelloServlet.class);
 
     private HelloService service;
@@ -33,7 +32,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Got request with parameters " + req.getParameterMap());
-        resp.getWriter().write(service.prepareGreeting(req.getParameter(NAME_PARA)));
+        resp.getWriter().write(service.prepareGreeting(req.getParameter(NAME_PARAM)));
 
         /*String name = req.getParameter(NAME_PARA);
 
