@@ -11,7 +11,6 @@ public class HelloServiceTest {
     private final static String WELCOME = "Hello";
     private final static String FALLBACK_LANG_ID_WELCOME = "Hola";
 
-
     @Test
     public void testPrepareGreeting_nullName_GreetingWithFallback() throws Exception {
         //Given
@@ -56,11 +55,27 @@ public class HelloServiceTest {
         assertEquals(FALLBACK_LANG_ID_WELCOME + " " + HelloService.FALLBACK_NAME + "!", result);
     }
 
-    private LangRepository fallbackLangIdRepository() {
-        return new LangRepository(){
+    @Test
+    public void test_prepareGreeting_nonExistingLang_returnsGreetingWithFallbackLang() throws Exception {
+        //Given
+        LangRepository mockRepository = new LangRepository() {
             @Override
             Optional<Lang> findById(Long id) {
-                if(id.equals(HelloService.FALLBACK_LANG.getId())){
+                return Optional.empty();
+            }
+        };
+        HelloService SUT = new HelloService(mockRepository);
+        //When
+        String result = SUT.prepareGreeting(null, "-1");
+        //Then
+        assertEquals(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!", result);
+    }
+
+    private LangRepository fallbackLangIdRepository() {
+        return new LangRepository() {
+            @Override
+            Optional<Lang> findById(Long id) {
+                if (id.equals(HelloService.FALLBACK_LANG.getId())) {
                     return Optional.of(new Lang(null, "Hola", null));
                 }
                 return Optional.empty();
@@ -77,5 +92,23 @@ public class HelloServiceTest {
         };
     }
 
+    @Test
+    public void test_prepareGreeting_nonExistingLang_returnsGreetingWithFallbackLang2() throws Exception {
+        //Given
+        LangRepository mockRepository = fallbackLangIdRepositoryEmpty();
+        HelloService SUT = new HelloService(mockRepository);
+        //When
+        String result = SUT.prepareGreeting(null, null);
+        //Then
+        assertEquals(HelloService.FALLBACK_LANG.getWelcomeMsg() + " " + HelloService.FALLBACK_NAME + "!", result);
+    }
 
+    private LangRepository fallbackLangIdRepositoryEmpty() {
+        return new LangRepository() {
+            @Override
+            Optional<Lang> findById(Long id) {
+                return Optional.empty();
+            }
+        };
+    }
 }
