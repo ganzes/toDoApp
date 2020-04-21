@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>ULTIMATE TODO LIST</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+          integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
 </head>
 <body>
-<form class="pure-form">
-       <label class="pure-radio">
-        <input type="radio" name="lang" value="option1" checked>
-        Here's a radio button. You can choose this one..
+<form class="pure-form" style="width: 40%; margin: 0 auto">
+    <input type="text" name="name" class="pure-input-rounded" placeholder="name">
+    <label class="pure-radio">
+        <input type="radio" name="lang" value="1" checked>
+        USA flag
     </label>
     <label class="pure-radio">
-        <input type="radio" name="lang" value="option2">
-        ..Or this one!
+        <input type="radio" name="lang" value="2">
+        PL flag
     </label>
+    <button class="pure-button pure-button-primary">Submit</button>
 </form>
 </body>
 </html>
