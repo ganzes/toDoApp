@@ -1,5 +1,7 @@
-package io.github.ganzes;
+package io.github.ganzes.hello;
 
+import io.github.ganzes.lang.Lang;
+import io.github.ganzes.lang.LangRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

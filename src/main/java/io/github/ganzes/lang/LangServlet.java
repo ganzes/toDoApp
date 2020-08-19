@@ -1,4 +1,4 @@
-package io.github.ganzes;
+package io.github.ganzes.lang;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

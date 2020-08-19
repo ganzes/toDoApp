@@ -1,6 +1,7 @@
-package io.github.ganzes;
+package io.github.ganzes.lang;
 
-import java.util.ArrayList;
+import io.github.ganzes.HibernateUtil;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +17,7 @@ public class LangRepository {
         return result;
     }
 
-
-    Optional<Lang> findById(Integer id) {
+    public Optional<Lang> findById(Integer id) {
         var session = HibernateUtil.getSessionFactory().openSession();
         var transaction = session.beginTransaction();
         var result = Optional.ofNullable(session.get(Lang.class, id));
