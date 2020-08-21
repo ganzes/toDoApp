@@ -27,4 +27,15 @@ public class ToDoRepository {
         session.close();
         return result;
     }
+
+    public ToDo addToDo(ToDo newToDo){
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+
+        session.persist(newToDo);
+        transaction.commit();
+        session.close();
+        return newToDo;
+
+    }
 }
