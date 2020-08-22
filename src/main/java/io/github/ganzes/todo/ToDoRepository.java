@@ -36,6 +36,5 @@ public class ToDoRepository {
         transaction.commit();
         session.close();
         return newToDo;
-
     }
 }

@@ -1,8 +1,6 @@
 package io.github.ganzes.todo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.ganzes.lang.LangRepository;
-import io.github.ganzes.lang.LangService;
 import io.github.ganzes.lang.LangServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
